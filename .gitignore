@@ -1,0 +1,13 @@
+bin/
+build/
+config/config
+config/system.mak
+install/
+.idea/
+main/*.o
+main/flite_lang_list.c
+main/flite_voice_list.c
+tools/*.o
+
+config.log
+config.status
