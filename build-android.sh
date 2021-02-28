@@ -3,25 +3,25 @@
 # This script builds all android target platforms of flite and installs the binaries in the local folder 'install'.
 #
 # You can override some variables with environment variables:
-#   - NDK: Android NDK including its version subdirectory
-#   - NDK_TOOLCHAIN:  Host platform depending on your build machine
+#   - ANDROID_NDK: Android ANDROID_NDK including its version subdirectory
+#   - ANDROID_NDK_TOOLCHAIN:  Host platform depending on your build machine
 #   - ANDROID_API: minSdkVersion
 #
 # Build directory is build/
 # Installation directory is install/
 #
-# Prerequisites: Android NDK
+# Prerequisites: installed Android NDK
 
 set -o pipefail
 set -x
 set -e
 
-# Set the location of where you downloaded the NDK including its version subdirectory
-NDK="${NDK:-/usr/local/ndk}"
+# Set the location of where you downloaded the ANDROID_NDK including its version subdirectory
+export ANDROID_NDK="${ANDROID_NDK:-/usr/local/ndk}"
 
 # Set toolchain, depending on your build machine...
-NDK_TOOLCHAIN=${NDK_TOOLCHAIN:-$NDK/toolchains/llvm/prebuilt/darwin-x86_64}
-#export NDK_TOOLCHAIN=$NDK/toolchains/llvm/prebuilt/linux-x86_64
+ANDROID_NDK_TOOLCHAIN=${ANDROID_NDK_TOOLCHAIN:-$ANDROID_NDK/toolchains/llvm/prebuilt/darwin-x86_64}
+#export ANDROID_NDK_TOOLCHAIN=$ANDROID_NDK/toolchains/llvm/prebuilt/linux-x86_64
 
 # Your minSdkVersion.
 ANDROID_API=${ANDROID_API:-21}
@@ -49,13 +49,14 @@ do
   rm -f config/config config/system.mak
   rm -f config.log config.status
 
-  export AR=$NDK_TOOLCHAIN/bin/llvm-ar
-  export CC=$NDK_TOOLCHAIN/bin/$TARGET$ANDROID_API-clang
+  export AR=$ANDROID_NDK_TOOLCHAIN/bin/llvm-ar
+  export CC=$ANDROID_NDK_TOOLCHAIN/bin/$TARGET$ANDROID_API-clang
   export AS=$CC
-  export CXX=$NDK_TOOLCHAIN/bin/$TARGET$ANDROID_API-clang++
-  export LD=$NDK_TOOLCHAIN/bin/ld
-  export RANLIB=$NDK_TOOLCHAIN/bin/llvm-ranlib
-  export STRIP=$NDK_TOOLCHAIN/bin/llvm-strip
+  export CXX=$ANDROID_NDK_TOOLCHAIN/bin/$TARGET$ANDROID_API-clang++
+  export LD=$ANDROID_NDK_TOOLCHAIN/bin/ld
+  export NM=$ANDROID_NDK_TOOLCHAIN/bin/nm
+  export RANLIB=$ANDROID_NDK_TOOLCHAIN/bin/llvm-ranlib
+  export STRIP=$ANDROID_NDK_TOOLCHAIN/bin/llvm-strip
 
   ./configure --host "$TARGET" --prefix=$(pwd)/install/"$TARGET"
   make -j && make -B install
