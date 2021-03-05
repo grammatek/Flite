@@ -474,3 +474,21 @@ wide range of fonts, and flite voices, and books in text, html and
 epub format.  Bard is used as a evaluation of flite's capabilities and
 an example of a serious application using flite.
 
+Update: Building for Android (as of 05.03.21)
+---------------------------------------------
+
+The all-in-one convenience script `build-android.sh` cleans, configures,
+makes & installs Flite binaries for all currently supported Android
+platforms into the subdirectory `install/` inside the project root.
+
+You should override some of the following settings via environment variables
+before running the script:
+
+`ANDROID_NDK`:  root of the directory where your NDK is installed
+
+`ANDROID_NDK_TOOLCHAIN`: Build host toolchain used for cross compilation
+
+`ANDROID_API`:  Android API level
+
+At least `ANDROID_NDK` should be adapted, because the default value will
+probably not fit out of the box.
