@@ -4124,17 +4124,17 @@ case "$target_os" in
 
 		if test "$target_cpu" = "aarch64"
 		then
-      	CFLAGS="$CFLAGS -O3 -DANDROID"
+		    CFLAGS="$CFLAGS -fpic -O3 -DANDROID"
 		fi
 
 		if test "$target_cpu" = "i686"
 		then
-      	CFLAGS="$CFLAGS -O3 -DANDROID"
+		    CFLAGS="$CFLAGS -fpic -O3 -DANDROID"
 		fi
 
 		if test "$target_cpu" = "x86_64"
 		then
-      	CFLAGS="$CFLAGS -O3 -DANDROID"
+		    CFLAGS="$CFLAGS -fpic -O3 -DANDROID"
 		fi
         ;;
         chrome*)
