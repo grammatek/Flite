@@ -1,9 +1,8 @@
-#!/bin/sh
-#####################################################-*-mode:shell-script-*-
+###########################################################################
 ##                                                                       ##
 ##                  Language Technologies Institute                      ##
 ##                     Carnegie Mellon University                        ##
-##                         Copyright (c) 2013                            ##
+##                        Copyright (c) 2013                             ##
 ##                        All Rights Reserved.                           ##
 ##                                                                       ##
 ##  Permission is hereby granted, free of charge, to use and distribute  ##
@@ -32,45 +31,23 @@
 ##                                                                       ##
 ###########################################################################
 ##                                                                       ##
-##  Make empty lang and lex directories for a new language               ##
+##  is general functions/models                                    ##
 ##                                                                       ##
 ###########################################################################
+TOP=../..
+DIRNAME=lang/lvl_is_lang
+BUILD_DIRS = 
+ALL_DIRS= 
+H = lvl_is_lang.h
+SRCS = lvl_is_lang.c lvl_is_phoneset.c
+SCRIPTS = 
+OBJS = $(SRCS:.c=.o)
+SCM=
+FILES = Makefile $(SCM) $(SRCS) $(H) $(SCRIPTS)
+LIBNAME = flite_lvl_is_lang
+LOCAL_INCLUDES = 
 
-export LANG=C;
+ALL = 
 
-if [ $# = 0 ]
-then
-   echo ./tools/make_new_lang_lex LANGNAME
-   echo Will make:
-   echo    lang/lvl_${LANGNAME}_lex/lvl_${LANGNAME}_lex.h
-   echo    lang/lvl_${LANGNAME}_lex/lvl_${LANGNAME}_lex.c
-   echo    lang/lvl_${LANGNAME}_lang/lvl_${LANGNAME}_lang.h
-   echo    lang/lvl_${LANGNAME}_lang/lvl_${LANGNAME}_lang.c
-   echo You may want to use tools/build_lex to make a more complete
-   echo set of files for lang/lvl_${LANGNAME}_lex/
-   echo
-   echo "Note this doesn't add anything to CVS, nor does it add the"
-   echo "lang to the langlist (add them to config/default.lv) by hand"
-fi
-
-LANGNAME=$1
-
-mkdir lang/lvl_${LANGNAME}_lex
-cat tools/Makefile.lex |
-sed 's/LANGNAME/'${LANGNAME}'/g' >lang/lvl_${LANGNAME}_lex/Makefile
-cat tools/LANGNAME_lex.h |
-sed 's/LANGNAME/'${LANGNAME}'/g' >lang/lvl_${LANGNAME}_lex/lvl_${LANGNAME}_lex.h
-cat tools/LANGNAME_lex.c |
-sed 's/LANGNAME/'${LANGNAME}'/g' >lang/lvl_${LANGNAME}_lex/lvl_${LANGNAME}_lex.c
-echo made lang/lvl_${LANGNAME}_lex/ and skeleton files
-
-mkdir lang/lvl_${LANGNAME}_lang
-cat tools/Makefile.lang |
-sed 's/LANGNAME/'${LANGNAME}'/g' >lang/lvl_${LANGNAME}_lang/Makefile
-cat tools/LANGNAME_lang.h |
-sed 's/LANGNAME/'${LANGNAME}'/g' >lang/lvl_${LANGNAME}_lang/lvl_${LANGNAME}_lang.h
-cat tools/LANGNAME_lang.c |
-sed 's/LANGNAME/'${LANGNAME}'/g' >lang/lvl_${LANGNAME}_lang/lvl_${LANGNAME}_lang.c
-echo made lang/lvl_${LANGNAME}_lang/ and skeleton files
-
+include $(TOP)/config/common_make_rules
 
