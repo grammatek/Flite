@@ -65,11 +65,6 @@ static int lvl_is_has_vowel_in_list(const cst_val *v);
 static int lvl_is_has_vowel_in_syl(const cst_item *i);
 static int lvl_is_sonority(const char *p);
 
-// cst_val *lvl_is_lex_lts_function(const struct lexicon_struct *l, 
-//                                    const char *word, const char *pos)
-// {
-//     return NULL;
-// }
 
 static int lvl_is_is_silence(const char *p)
 {
@@ -110,7 +105,6 @@ static int lvl_is_is_vowel(const char *p)
 
 static int lvl_is_sonority(const char *p)
 {
-    /* A bunch of hacks for US English phoneset */
     if (lvl_is_is_vowel(p) || (lvl_is_is_silence(p)))
 	return 5;
     else if ((sizeof(p) < 2 || strchr("0",p[2]) == NULL) && strchr("wylr",p[0]) != NULL)
@@ -125,7 +119,7 @@ static int lvl_is_sonority(const char *p)
 
 int lvl_is_syl_boundary(const cst_item *i,const cst_val *rest)
 {
-    // TODO adapt to is
+    // UNIMPLEMENTED has not been adapted to Icelandic
     /* Returns TRUE if this should be a syllable boundary */
     /* This is of course phone set dependent              */
     int p, n, nn;
@@ -157,7 +151,6 @@ int lvl_is_syl_boundary(const cst_item *i,const cst_val *rest)
 
 static int lvl_is_lex_dist_to_vowel(const cst_val *rest)
 {
-    // TODO adapt to is
     if (rest == 0)
         return 0;  /* shouldn't get here */
     else if (lvl_is_is_vowel(val_string(val_car(rest))))
@@ -167,24 +160,11 @@ static int lvl_is_lex_dist_to_vowel(const cst_val *rest)
 }
 
 
-// cst_val *lvl_is_lex_lts_function(const struct lexicon_struct *l, 
-//                                    const char *word, const char *pos)
-// {
-//     return NULL;
-// }
-
-
 
 cst_lexicon *lvl_is_lex_init(void)
 {
     // /* Should it be global const or dynamic */
     // /* Can make lts_rules just a cart tree like others */
-    // cst_lexicon *l;
-
-    // l = cst_alloc(cst_lexicon,1);
-    // l->name = "lvl_is_lex";
-
-    // l->lts_function = lvl_is_lex_lts_function;
     if (lvl_is_lts_rules.name)
     return &lvl_is_lex;  /* Already initialized */
 
