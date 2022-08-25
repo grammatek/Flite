@@ -52,8 +52,8 @@ extern const char * const lvl_is_lex_phones_huff_table[];
 extern const char * const lvl_is_lex_entries_huff_table[];
 
 
-cst_lexicon lvl_is_lex;
-cst_lts_rules lvl_is_lts_rules;
+static cst_lexicon lvl_is_lex;
+static cst_lts_rules lvl_is_lts_rules;
 extern const char * const lvl_is_lts_phone_table[];
 extern const char * const lvl_is_lts_letter_table[];
 extern const cst_lts_addr lvl_is_lts_letter_index[];

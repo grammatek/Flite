@@ -54,14 +54,6 @@ static cst_val *lvl_is_tokentowords(cst_item *token)
     if (item_feat_present(token,"phones"))
 	return cons_val(string_val(name),NULL);
 
-#if 0
-    if (item_feat_present(token,"nsw"))
-	nsw = item_feat_string(token,"nsw");
-
-    utt = item_utt(token);
-    lex = val_lexicon(feat_val(utt->features,"lexicon"));
-#endif
-
     if (cst_strlen(name) > 0)
         r = cons_val(string_val(name),0);
     else
