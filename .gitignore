@@ -8,6 +8,7 @@ main/*.o
 main/flite_lang_list.c
 main/flite_voice_list.c
 tools/*.o
-
+lang/*/lex/
 config.log
 config.status
+.vscode
