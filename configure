@@ -2997,13 +2997,13 @@ if test "$ac_test_CFLAGS" = set; then
   CFLAGS=$ac_save_CFLAGS
 elif test $ac_cv_prog_cc_g = yes; then
   if test "$GCC" = yes; then
-    CFLAGS="-g -O2"
+    CFLAGS="-g -O3"
   else
     CFLAGS="-g"
   fi
 else
   if test "$GCC" = yes; then
-    CFLAGS="-O2"
+    CFLAGS="-O3"
   else
     CFLAGS=
   fi
@@ -4149,7 +4149,7 @@ case "$target_os" in
                 LDFLAGS="$LDFLAGS -Wl,-elf2flt"
         ;;
 	darwin*)
-		CFLAGS="$CFLAGS -no-cpp-precomp"
+		CFLAGS="$CFLAGS -fpic -no-cpp-precomp"
 	;;
   wasi)
     CFLAGS="$CFLAGS -DDIE_ON_ERROR -DCST_NO_SOCKETS -DWASM32_WASI"
