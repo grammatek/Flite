@@ -107,7 +107,7 @@ static int lvl_is_sonority(const char *p)
 {
     if (lvl_is_is_vowel(p) || (lvl_is_is_silence(p)))
 	return 5;
-    else if ((sizeof(p) < 2 || strchr("0",p[2]) == NULL) && strchr("wylr",p[0]) != NULL)
+    else if ((cst_strlen(p) < 2 || strchr("0",p[2]) == NULL) && strchr("wylr",p[0]) != NULL)
 	return 4;  /* glides/liquids */
     else if (strchr("nmNJ",p[0]) != NULL)
 	return 3;  /* nasals */
