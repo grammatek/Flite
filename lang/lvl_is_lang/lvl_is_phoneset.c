@@ -281,7 +281,7 @@ const cst_phoneset lvl_is_phoneset = {
   lvl_is_featvals,
   lvl_is_phonenames,
   "pau",
-  60,
+  59,
   lvl_is_fvtable,
   0  /* not freeable */
 };
